@@ -24,9 +24,14 @@ def cal_similarity(img_ingredients):
         output_list.append(el[:2] + [el[-1]])
         indices.append(el[-2])
 
-    return indices
+    detected_ingredients = []
+    for i in range(length):
+        if int(img_ingredients[i]) == 1:
+            detected_ingredients.append(read[0][i + 2])
 
+    return [indices[:5], detected_ingredients]
 
+#
 # if __name__ == '__main__':
-#     idx = cal_similarity([1] + [0] * 32)[:5]
-#     print(idx)
+#     idx_ingredients = cal_similarity([1] + [0] * 32)
+#     print(idx_ingredients)

@@ -4,3 +4,5 @@ __pycache__
 contents
 nohup.out
 .idea
+.DS_Store
+yolov4/.DS_Store

@@ -38,9 +38,11 @@ def hello():
     file.save(save_to)
     image, ingredients_list = img_detect(yolo, num_classes, save_to, output_to)
     if sum(ingredients_list) == 0:
-        return '0'
-    indices = cal_similarity(ingredients_list)[:5]
-    return ' '.join(map(str, indices))
+        return {'idx': [0], 'ingredients': [""]}
+    idx_ingredients = cal_similarity(ingredients_list)[:5]
+    keys = ['idx', 'ingredients']
+    output = dict(zip(keys, idx_ingredients))
+    return output
 
 
 if __name__ == '__main__':
