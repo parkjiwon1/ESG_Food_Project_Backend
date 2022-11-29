@@ -11,7 +11,11 @@ def cal_similarity(img_ingredients):
         for i in range(2, length + 2):
             score += int(img_ingredients[i - 2]) & int(line[i])
         line.append(idx)
-        line.append(score)
+        if sum(map(int, line[2:-1])) != 0:
+            score_ = score / sum(map(int, line[2:-1]))
+        else:
+            score_ = 0
+        line.append(score_)
 
     sorted_list = sorted(read[1:], key=lambda x: x[-1], reverse=True)
     output_list = []
@@ -24,4 +28,5 @@ def cal_similarity(img_ingredients):
 
 
 # if __name__ == '__main__':
-#     cal_similarity([1] * 33)
+#     idx = cal_similarity([1] + [0] * 32)[:5]
+#     print(idx)
